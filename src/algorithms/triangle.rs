@@ -13,7 +13,8 @@ pub enum TriangleMode {
 
 #[derive(Clone, Copy)]
 pub struct Triangle {
-    pub vertices: [Vector3; 3],
+    pub vertices: [Vector3; 3],  // vértices en 3d
+    pub positions: [Vector3; 3], // vértices del .obj para los fragment
     pub colors: [Color; 3],
 }
 
@@ -21,6 +22,7 @@ impl Triangle {
     pub fn new(first: Vector3, second: Vector3, third: Vector3) -> Self {
         Self {
             vertices: [first, second, third],
+            positions: [first, second, third],
             colors: [Color::RED, Color::GREEN, Color::BLUE],
         }
     }
@@ -46,10 +48,14 @@ impl Triangle {
         }
 
         let depth = weights[0] * first.z + weights[1] * second.z + weights[2] * third.z;
+        let position = self.positions[0] * weights[0]
+            + self.positions[1] * weights[1]
+            + self.positions[2] * weights[2];
         Some(Fragment {
             x,
             y,
             depth,
+            position,
             color: interpolate_color(self.colors, weights),
         })
     }
@@ -60,6 +66,7 @@ pub struct Fragment {
     pub x: i32,
     pub y: i32,
     pub depth: f32,
+    pub position: Vector3,
     pub color: Color,
 }
 

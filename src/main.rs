@@ -2,6 +2,7 @@ mod algorithms;
 mod framebuffer;
 mod line;
 mod model;
+mod procedural;
 mod shaders;
 
 use algorithms::barycentric::FilledBarycentric;
@@ -110,6 +111,11 @@ fn render(
             framebuffer,
             &Triangle {
                 vertices: projected,
+                positions: [
+                    model.vertices[indices[0]],
+                    model.vertices[indices[1]],
+                    model.vertices[indices[2]],
+                ],
                 colors: [
                     model.colors[indices[0]],
                     model.colors[indices[1]],
@@ -213,6 +219,7 @@ fn main() {
             .expect("active shader must exist in the shader registry");
         let uniforms = Uniforms {
             time: start_time.elapsed().as_secs_f32(),
+            light_position: Vector3::new(-3.0, 3.0, -3.0),
         };
 
         render(
@@ -225,6 +232,10 @@ fn main() {
             shader,
             &uniforms,
         );
+
+        if active_shader == STAR_SHADER {
+            framebuffer.apply_bloom();
+        }
 
         framebuffer.swap_buffers(&mut window, &raylib_thread, &active_shader);
     }
