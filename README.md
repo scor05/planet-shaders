@@ -9,16 +9,19 @@ En este repositorio está mi implementación de un renderer de modelos .obj con 
 ## Capturas de los cuerpos celestes
 
 ### 1. Estrella de neutrones
+<img width="788" height="594" alt="image" src="https://github.com/user-attachments/assets/e045e858-aa25-4128-a92e-6991df9de27a" />
 
 
 ### 2. Planeta oceánico
+<img width="798" height="594" alt="image" src="https://github.com/user-attachments/assets/ab3688d1-cecb-4765-bebc-43f3a234436a" />
 
 
 ### 3. Gigante gaseoso
+<img width="793" height="591" alt="image" src="https://github.com/user-attachments/assets/e1e693b8-6136-47e8-bd24-a254b4328cf6" />
 
 
 ## Demostración de las animaciones
-Como para los tres cuerpos utilicé animaciones que dependen del tiempo, decidí grabar un solo video que demuestra los tres shaders, el cual se puede encontrar [en este enlace de YouTube]()
+Como para los tres cuerpos utilicé animaciones que dependen del tiempo, decidí grabar un solo video que demuestra los tres shaders, el cual se puede encontrar [en este enlace de YouTube](https://youtu.be/c2uHly26wDA)
 
 
 ## Estructura del proyecto
